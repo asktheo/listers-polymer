@@ -1,11 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ * Copyright (c) 2018 Netfugl
  */
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
@@ -51,12 +46,12 @@ class Profiles extends PolymerElement {
     // Output the custom element's HTML tag to the browser console.
     // Open your browser's developer tools to view the output.
     console.log(this.tagName);
-    this.getUsers();
   }
   
   getUsers(){
-    this.profiles$ = ajax.getJSON('http://localhost:8080/profiles');
+
     if(!this.loadComplete) {
+      this.profiles$ = ajax.getJSON('http://localhost:8080/profiles');
       this.profiles$
       //.map(res => res.json())
       .subscribe(result => {
@@ -80,7 +75,7 @@ class Profiles extends PolymerElement {
         <h1>[[message]]</h1>
         <ul>
         <template is="dom-repeat" items="[[profiles]]">
-            <li><a href="/profile/[[item.profileId]]">[[item.firstName]] [[item.lastName]]</a></li>
+            <li><a href="/profile/[[item.profileId]]">[[item.firstName]] [[item.lastName]]</a> - <a href="/checklist/[[item.profileId]]/wp">WPlist</a></li>
         </template>
         </ul>
 

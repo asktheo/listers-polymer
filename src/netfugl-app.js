@@ -85,8 +85,9 @@ class NetFuglApp extends PolymerElement {
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
       </app-location>
 
-      <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
-      </app-route>
+      <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+      <app-route route="{{route}}" pattern="[[rootPath]]profile/:profile_id" data="{{subrouteData}}"></app-route>
+      <app-route route="{{route}}" pattern="[[rootPath]]checklist/:profile_id/:checklist" data="{{subrouteData}}"></app-route>
 
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
         <!-- Drawer content -->
@@ -114,7 +115,8 @@ class NetFuglApp extends PolymerElement {
             <front-view name="front"></front-view>
             <gallery-view name="gallery"></gallery-view>
             <profiles-view name="profiles"></profiles-view>
-            <profile-view name="profile"></profile-view>
+            <profile-view name="profile" data="[[subrouteData.profile_id]]"></profile-view>
+            <checklist-view name="checklist" data="[[subrouteData]]"></checklist-view>
             <error404-view name="view404"></error404-view>
           </iron-pages>
         </app-header-layout>
@@ -147,7 +149,7 @@ class NetFuglApp extends PolymerElement {
      // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'front';
-    } else if (['front', 'gallery', 'profiles', 'profile'].indexOf(page) !== -1) {
+    } else if (['front', 'gallery', 'profiles', 'profile','checklist'].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
@@ -176,7 +178,10 @@ class NetFuglApp extends PolymerElement {
         break;   
       case 'profile':
         import('./profile-view.js');
-        break;              
+        break;    
+      case 'checklist':
+        import('./checklist-view.js');
+        break;                   
       case 'view404':
         import('./error404-view.js');
         break;

@@ -1,0 +1,26 @@
+<table cols="2" style="width:90%">
+    <template is="dom-if" if="[[profile.nickName]]">
+        <tr>
+            <td>Nick name: </td>
+            <td>[[profile.nickName]]</td>
+        </tr>
+    </template>
+    <template is="dom-if" if="[[profile.description]]">
+        <tr>
+            <td>About Me: </td>
+            <td[[profile.description]]</td>
+        </tr>
+    </template>
+    <template is="dom-if" if="[[profile.work]]">
+        <tr>
+            <td>Work: </td>
+            <td>[[profile.work]]</td>
+        </tr>
+    </template>
+    <template is="dom-if" if="[[profile.dreamBirds]]">
+        <tr>
+            <td>Dream birds: </td>
+            <td>[[profile.dreamBirds]]</td>
+        </tr>
+    </template>
+</table>
