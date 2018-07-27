@@ -51,7 +51,7 @@ class Profiles extends PolymerElement {
   getUsers(){
 
     if(!this.loadComplete) {
-      this.profiles$ = ajax.getJSON('http://localhost:8080/profiles');
+      this.profiles$ = ajax.getJSON('http://localhost:8080/netfugl/profiles');
       this.profiles$
       //.map(res => res.json())
       .subscribe(result => {
@@ -75,7 +75,7 @@ class Profiles extends PolymerElement {
         <h1>[[message]]</h1>
         <ul>
         <template is="dom-repeat" items="[[profiles]]">
-            <li><a href="/profile/[[item.profileId]]">[[item.firstName]] [[item.lastName]]</a> - <a href="/checklist/[[item.profileId]]/wp">WPlist</a></li>
+            <li><a href="[[rootPath]]profile/[[item.profileId]]">[[item.firstName]] [[item.lastName]]</a> - <a href="[[rootPath]]checklist/[[item.profileId]]/wp">WPlist</a></li>
         </template>
         </ul>
 

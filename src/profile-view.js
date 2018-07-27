@@ -140,7 +140,7 @@ class Profile extends PolymerElement {
   }
 
   getUser(){
-    this.profile$ = ajax.getJSON('http://localhost:8080/profile?id=' + this.data);
+    this.profile$ = ajax.getJSON('http://localhost:8080/netfugl/profile?id=' + this.data);
     this.profile$
     .subscribe(result => {
       this.profile = result;

@@ -66,7 +66,7 @@ class Checklist extends PolymerElement {
 
   getCheckList(){
     console.log("routed: ", this.data);
-    var url = this.data.checklist === 'wp' ? 'http://localhost:8080/wpchecklist' : 'http://localhost:8080/dkchecklist';
+    var url = this.data.checklist === 'wp' ? 'http://localhost:8080/netfugl/wpchecklist' : 'http://localhost:8080/netfugl/dkchecklist';
     url += '?profile_id=' + this.data.profile_id;
     this.checklist$ = ajax.getJSON(url);
     this.checklist$
